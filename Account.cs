@@ -35,7 +35,7 @@ namespace ConsoleApp79
             while (true)
             {
                 if (Regex.IsMatch(password, @"\A(?=.*[0-9]+)(?=.*\w+).{8,16}\z")) break;
-                Console.WriteLine("password must be between 8 and 16 characters and must contain letters and numbers!");
+                Console.WriteLine("Password must be between 8 and 16 characters and must contain letters and numbers!");
                 Console.Write("Enter password: ");
                 password = Program.HiddenString();
                 Console.WriteLine();
@@ -45,8 +45,18 @@ namespace ConsoleApp79
             Console.WriteLine();
             while (true){
                 if (repeatPassword == "!") {
+                    Console.Write("Enter password: ");
                     password = Program.HiddenString();
                     Console.WriteLine();
+                    while (true)
+                    {
+
+                        if (Regex.IsMatch(password, @"\A(?=.*[0-9]+)(?=.*\w+).{8,16}\z")) break;
+                        Console.WriteLine("Password must be between 8 and 16 characters and must contain letters and numbers!");
+                        Console.Write("Enter password: ");
+                        password = Program.HiddenString();
+                        Console.WriteLine();
+                    }
                     Console.Write("Repeat password: ");
                     repeatPassword = Program.HiddenString();
                     Console.WriteLine();
@@ -66,7 +76,7 @@ namespace ConsoleApp79
             Array.Copy(hash, 0, hashSalt, 0, 20);
             Array.Copy(salt, 0, hashSalt, 20, 16);
             PasswordHash = Convert.ToBase64String(hashSalt);
-            // Console.WriteLine(PasswordHash);
+            //Console.WriteLine(PasswordHash);
 
             
             while (true)

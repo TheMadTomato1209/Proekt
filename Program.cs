@@ -24,7 +24,7 @@ namespace ConsoleApp79
                     stringBuilder.Append(keyChar);
                 }
                 else if (keyI.Key == ConsoleKey.Enter) return stringBuilder.ToString();
-                else if (keyI.Key == ConsoleKey.Backspace && Console.CursorLeft != 0) {
+                else if (keyI.Key == ConsoleKey.Backspace && Console.CursorLeft != 0 && stringBuilder.Length != 0) {
                     Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                     Console.Write(' ');
                     Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
@@ -67,7 +67,7 @@ namespace ConsoleApp79
                     // Console.WriteLine(sB + "ale");
                     inBinary[i] = sB.ToString();
                 }
-                //a Console.Write(inBinary[i] + " ");
+                //b Console.Write(inBinary[i] + " ");
             }
             //a Console.WriteLine();
 
@@ -87,10 +87,10 @@ namespace ConsoleApp79
                     // Console.WriteLine(sB + "ale");
                     keyBinary[i] = sB.ToString();
                 }
-                //a Console.Write(keyBinary[i] + " ");
+                //b Console.Write(keyBinary[i] + " ");
             }
 
-            //a Console.WriteLine();
+            //b Console.WriteLine();
             string[] encryptedBinary = new string[inBinary.Length];
             for (int i = 0; i < inBinary.Length; i++)
             {
@@ -102,12 +102,17 @@ namespace ConsoleApp79
                     if (int.Parse(inBinary[i][j].ToString()) + int.Parse(keyBinary[ki][j].ToString()) == 1) stringBuilder.Append("1");
                     else stringBuilder.Append("0");
                 }
-                //Console.Write(stringBuilder.ToString() + " ");
+                //b Console.Write(stringBuilder.ToString() + " ");
                 encryptedBinary[i] = ((char)Convert.ToInt32(stringBuilder.ToString(), 2)).ToString();
                 //a Console.Write(encryptedBinary[i]);
 
             }
-            return encryptedBinary;
+        //    Console.WriteLine();
+        //    foreach (var item in encryptedBinary)
+        //    {
+        //        Console.Write(item);
+        //    }
+              return encryptedBinary;
         }
 
         static void Main(string[] args)
@@ -142,7 +147,7 @@ namespace ConsoleApp79
                     {
                         Console.Write(new string(' ', 21));
                         Console.SetCursorPosition(0, Console.CursorTop);
-                        Console.WriteLine("yahu");
+                        //Console.WriteLine("yahu");
 
                         Console.Write("Enter Username: ");
                         string uName = Console.ReadLine();
